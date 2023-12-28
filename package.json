@@ -1,0 +1,31 @@
+{
+  "name": "@brinkninja/node-anvil",
+  "version": "0.1.0",
+  "description": "Node.js utility for Foundry's anvil process",
+  "author": "brink.trade",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-mocha --file test/setup.ts test/**/*.ts",
+    "test-dist": "mocha --require ts-node/register --file dist/test/setup.js dist/test/**/*.js",
+    "docker": "docker build -t start-anvil . && docker run start-anvil"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.11",
+    "@types/chai-as-promised": "^7.1.5",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.10.5",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^10.2.0",
+    "ts-mocha": "^10.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "5.1.3"
+  }
+}
