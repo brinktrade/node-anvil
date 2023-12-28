@@ -2,27 +2,26 @@ import { ChildProcessWithoutNullStreams, spawn } from 'child_process'
 
 export default async function (
   {
-    chainId,
+    forkUrl,
     forkBlockNumber,
     logging
   }: {
-    chainId: number,
+    forkUrl?: string,
     forkBlockNumber?: number,
     logging?: boolean
   }
 ) : Promise<ChildProcessWithoutNullStreams> {
   return new Promise((resolve, reject) => {
     const args: string[] = []
-    if (chainId) {
-      const rpcUrl = process.env[`CHAIN_${chainId}_RPC_URL`]
-      if (!rpcUrl) {
-        reject(new Error(`chainId ${chainId} not supported. Need to set CHAIN_${chainId}_RPC_URL in .env`))
-      }
-      args.push(`--fork-url=${rpcUrl}`)
-      if (forkBlockNumber) {
-        args.push(`--fork-block-number=${forkBlockNumber}`)
-      }
+
+    if (forkUrl) {
+      args.push(`--fork-url=${forkUrl}`)
     }
+
+    if (forkBlockNumber) {
+      args.push(`--fork-block-number=${forkBlockNumber}`)
+    }
+
     const anvilProcess = spawn('anvil', args)
 
     anvilProcess.stdout.on('data', (data) => {
