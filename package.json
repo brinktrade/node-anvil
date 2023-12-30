@@ -1,6 +1,6 @@
 {
   "name": "@brinkninja/node-anvil",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Node.js utility for Foundry's anvil process",
   "author": "brink.trade",
   "license": "GPL-3.0-or-later",
