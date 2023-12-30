@@ -7,4 +7,10 @@ describe('startAnvil', function () {
     expect(anvil).not.to.be.undefined
     anvil.kill()
   })
+
+  it('should start when setting a non default port', async function () {
+    const anvil = await startAnvil({ port: 8546 })
+    expect(anvil).not.to.be.undefined
+    anvil.kill()
+  })
 })
